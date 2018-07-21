@@ -6,6 +6,7 @@ use App\Http\Requests\PenggunaRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Photo;
 use App\Http\Requests;
 
 
@@ -41,13 +42,24 @@ class AdminPenggunaController extends Controller
      */
     public function store(PenggunaRequest $request)
     {
+        $fotoId = "";
+        if($foto = $request->file('file'))
+        {
+            $namaFoto = time() . $foto->getClientOriginalName();
+            $foto->move('fotodirektori', $namaFoto);
+            $fotoId = Photo::create(['lokasi_file'=>$namaFoto]);
+        }
+
         User::create([
             'name'=> $request->nama,
             'role_id'=> $request->peran,
             'email' => $request->email,
             'is_active' => $request->status,
-            'password' => bcrypt($request->katasandi)
+            'password' => bcrypt($request->katasandi),
+            'foto_id' => $fotoId->id
         ]);
+
+
         return view('admin.pengguna.index');
     }
 
