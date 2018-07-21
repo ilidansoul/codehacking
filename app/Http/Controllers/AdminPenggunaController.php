@@ -20,6 +20,7 @@ class AdminPenggunaController extends Controller
     public function index()
     {
         $pengguna = User::all();
+
         return view ('admin.pengguna.index', compact('pengguna'));
     }
 
@@ -48,6 +49,7 @@ class AdminPenggunaController extends Controller
             $namaFoto = time() . $foto->getClientOriginalName();
             $foto->move('fotodirektori', $namaFoto);
             $fotoId = Photo::create(['lokasi_file'=>$namaFoto]);
+            $fotoId = $fotoId->id;
         }
 
         User::create([
@@ -60,7 +62,7 @@ class AdminPenggunaController extends Controller
         ]);
 
 
-        return view('admin.pengguna.index');
+        return redirect('admin/pengguna');
     }
 
     /**
@@ -82,7 +84,9 @@ class AdminPenggunaController extends Controller
      */
     public function edit($id)
     {
-        return view ('admin.pengguna.ubah');
+        $pengguna = User::findOrFail($id);
+        $peran = Role::all();
+        return view('admin.pengguna.ubah', compact('pengguna', 'peran'));
     }
 
     /**
@@ -92,9 +96,27 @@ class AdminPenggunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PenggunaRequest $request, $id)
     {
-        //
+        $pengguna = User::findOrFail($id);
+        $fotoId = "";
+        if($foto = $request->file('file'))
+        {
+            $namaFoto = time() . $foto->getClientOriginalName();
+            $foto->move('fotodirektori', $namaFoto);
+            $fotoId = Photo::create(['lokasi_file'=>$namaFoto]);
+            $fotoId = $fotoId->id;
+        }
+
+        $pengguna->update([
+            'name'=> $request->nama,
+            'role_id'=> $request->peran,
+            'email' => $request->email,
+            'is_active' => $request->status,
+            'password' => bcrypt($request->katasandi),
+            'foto_id' => $fotoId
+        ]);
+        return redirect('admin/pengguna');
     }
 
     /**
