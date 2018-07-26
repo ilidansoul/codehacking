@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 
+
 @section('content')
+  @if(Session::has('pesan_hapus'))
+    <p class="bg-danger">{{session("pesan_hapus")}}</p>
+    @endif
     <h1>Pengguna</h1>
     <table class="table">
       <thead>
@@ -42,7 +46,7 @@
             <td>{{$individual->created_at}}</td>
             <td>{{$individual->updated_at}}</td>
             <td>{{$individual->is_active == 1 ? 'Aktif' : 'Tidak aktif'}}</td>
-          <td><a href="{{route('admin.pengguna.edit', $individual->id)}}">Ubah  </a><a href="">Hapus</a></td>
+          <td><a href="{{route('admin.pengguna.edit', $individual->id)}}">Ubah</a></td>
         </tr>
 
           @endforeach

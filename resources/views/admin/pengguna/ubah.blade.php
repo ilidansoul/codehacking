@@ -44,6 +44,12 @@
         </div>
     </form>
 
+    <form method="POST" action="{{action('AdminPenggunaController@destroy', $pengguna->id)}}">
+        {{csrf_field()}}
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Hapus">
+    </form>
+
 
     @if(count($errors) > 0)
         <div class="alert alert-danger">

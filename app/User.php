@@ -26,15 +26,31 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
+    protected $hidden =
+        [
         'password', 'remember_token',
-    ];
+        ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo('App\Role');
     }
 
-    public function photo(){
-        return $this->belongsTo('App\Photo');
+    public function photo()
+    {
+        return $this->belongsTo('App\Photo', 'foto_id');
+    }
+
+    public function apakahAdmin()
+    {
+        if($this->role->name == 'Adminstrator')
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function post(){
+        return $this->hasMany('App\Post');
     }
 }

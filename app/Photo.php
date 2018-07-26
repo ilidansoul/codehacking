@@ -8,17 +8,18 @@ class Photo extends Model
 {
     protected $uploads = "/fotodirektori/";
 
+    protected $table = 'photos';
     protected $fillable = [
         'lokasi_file',
-        'id'
+        'id',
     ];
 
     public function getlokasifileAttribute($lokasi){
         return $this->uploads . $lokasi;
     }
 
-    public function  lokasi(){
-        return $this->uploads;
+    public function photo ()
+    {
+        return $this->belongsTo('App\Post', 'id');
     }
-
 }

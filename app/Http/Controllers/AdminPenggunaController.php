@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use App\Photo;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 
 class AdminPenggunaController extends Controller
@@ -58,7 +59,7 @@ class AdminPenggunaController extends Controller
             'email' => $request->email,
             'is_active' => $request->status,
             'password' => bcrypt($request->katasandi),
-            'foto_id' => $fotoId->id
+            'foto_id' => $fotoId
         ]);
 
 
@@ -127,6 +128,12 @@ class AdminPenggunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pengguna = User::findOrFail($id);
+
+        unlink(public_path() . $pengguna->lokasi_file);
+
+        $pengguna->delete();
+
+        return redirect('/admin/pengguna');
     }
 }
