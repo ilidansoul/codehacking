@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Photo;
 use App\Post;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $banyakKategori = [];
+        $banyakKategori = Category::all();
 
         return view('admin.post.buat', compact('banyakKategori'));
     }
@@ -55,7 +56,7 @@ class AdminPostsController extends Controller
            'title'=>$request->judul,
            'content'=>$request->konten,
            'photo_id'=>$photo_id,
-           'category_id'=>0,
+           'category_id'=>$request->kategori,
             'user_id'=>$pengguna->id
 
         ]);

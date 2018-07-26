@@ -17,7 +17,7 @@
             <select name="kategori" class="form-control">
                 @if($banyakKategori)
                     @foreach($banyakKategori as $kategori)
-                        <option value="{{$individual->id}}">{{$individual->name}}</option>
+                        <option value="{{$kategori->id}}">{{$kategori->name}}</option>
                     @endforeach
                 @endif
             </select>

@@ -25,6 +25,7 @@ class BuatPostCreateRequest extends Request
     {
         return [
             'judul'=>'required|max:254',
+            'kategori'=>'required',
             'konten'=>'required',
         ];
     }

@@ -27,7 +27,7 @@
             <td>{{$no}}</td>
              <td>{{$post->id}}</td>
              <td>{{$post->pengguna->name}}</td>
-            <td>{{$post->category_id}}</td>
+            <td>{{$post->kategori ? $post->kategori->name : 'error'}}</td>
              <td><img height="100" width="100"
                       src="{{$post->photo ? '/post' . $post->photo->lokasi_file :
                       'fotokategori/blank-profile-picture.jpg'}}" alt=""></td>
