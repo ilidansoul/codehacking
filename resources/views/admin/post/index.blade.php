@@ -31,8 +31,8 @@
              <td><img height="100" width="100"
                       src="{{$post->photo ? '/post' . $post->photo->lokasi_file :
                       'fotokategori/blank-profile-picture.jpg'}}" alt=""></td>
-            <td>{{$post->title}}</td>
-            <td>{{$post->content}}</td>
+            <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
+            <td>{{str_limit($post->content, 10)}}</td>
             <td>{{$post->created_at}}</td>
             <td>{{$post->updated_at}}</td>
         </tr>

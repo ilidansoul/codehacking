@@ -83,7 +83,9 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banyakKategori = Category::all();
+        $post = Post::findOrFail($id);
+        return view ('admin.post.ubah', compact('post', 'banyakKategori'));
     }
 
     /**
@@ -95,7 +97,26 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $pengguna = Auth::user();
+        $photo_id = "";
+        if($photo = $request->file('photo'))
+        {
+            $nama = time(). $photo->getClientOriginalName();
+            $photo->move('post/fotodirektori/', $nama);
+            $buatPhoto = Photo::create(['lokasi_file'=>$nama]);
+            $photo_id = $buatPhoto->id;
+        }
+        $post->update([
+            'title'=>$request->judul,
+            'content'=>$request->konten,
+            'photo_id'=>$photo_id,
+            'category_id'=>$request->kategori,
+            'user_id'=>$pengguna->id
+
+        ]);
+
+        return redirect('/admin/posts');
     }
 
     /**
@@ -106,6 +127,12 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        unlink(public_path() . '/post/' . $post->photo->lokasi_file);
+
+        $post->delete();
+
+        return redirect('/admin/posts');
     }
 }
