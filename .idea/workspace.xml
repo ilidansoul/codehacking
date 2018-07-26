@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6767aa1-487a-47a4-b0e4-5a736bb30bfa" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a6767aa1-487a-47a4-b0e4-5a736bb30bfa" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -297,12 +295,12 @@
       <workItem from="1532157043603" duration="28037000" />
       <workItem from="1532428157089" duration="600000" />
       <workItem from="1532586547020" duration="8723000" />
-      <workItem from="1532607378539" duration="4863000" />
+      <workItem from="1532607378539" duration="5318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51635000" />
+    <option name="totallyTimeSpent" value="52090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,7 +321,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32890365" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32890365" />
       <window_info id="Gulp" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49876237" visible="true" weight="0.30248618" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49876237" weight="0.30248618" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50123763" side_tool="true" weight="0.30248618" />
