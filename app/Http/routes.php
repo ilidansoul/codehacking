@@ -25,4 +25,5 @@ Route::group(['middleware'=>'admin'], function (){
     });
     Route::resource('/admin/pengguna', 'AdminPenggunaController');
     Route::resource('/admin/posts', 'AdminPostsController');
+    Route::resource('admin/kategori', 'AdminPostKategoriController');
 });

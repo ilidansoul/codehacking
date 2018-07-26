@@ -2,6 +2,14 @@
 
 @section('content')
     <h1>Ubah Post</h1>
+
+    <div class="row">
+        
+        <div class="col-sm-3">
+            <img height="1" src="{{$post->photo->lokasi_file}}" alt="" class="img-responsive">
+        </div>
+
+        <div class="col-sm-9">
     <form action="{{action('AdminPostsController@update', $post->id)}}" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <input type="hidden" name="_method" value="PATCH">
@@ -37,7 +45,8 @@
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Hapus">
     </form>
-
+        </div>
+    </div>
 
     @if(count($errors) > 0)
         <div class="alert alert-danger">
