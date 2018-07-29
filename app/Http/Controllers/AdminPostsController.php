@@ -48,7 +48,7 @@ class AdminPostsController extends Controller
         if($photo = $request->file('photo'))
         {
             $nama = time(). $photo->getClientOriginalName();
-            $photo->move('post/fotodirektori/', $nama);
+            $photo->move('fotodirektori/', $nama);
             $buatPhoto = Photo::create(['lokasi_file'=>$nama]);
             $photo_id = $buatPhoto->id;
         }
@@ -103,7 +103,7 @@ class AdminPostsController extends Controller
         if($photo = $request->file('photo'))
         {
             $nama = time(). $photo->getClientOriginalName();
-            $photo->move('post/fotodirektori/', $nama);
+            $photo->move('fotodirektori/', $nama);
             $buatPhoto = Photo::create(['lokasi_file'=>$nama]);
             $photo_id = $buatPhoto->id;
         }
@@ -129,7 +129,7 @@ class AdminPostsController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        unlink(public_path() . '/post/' . $post->photo->lokasi_file);
+        unlink(public_path() . $post->photo->lokasi_file);
 
         $post->delete();
 

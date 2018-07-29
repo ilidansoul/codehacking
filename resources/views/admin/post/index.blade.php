@@ -29,7 +29,7 @@
              <td>{{$post->pengguna->name}}</td>
             <td>{{$post->kategori ? $post->kategori->name : 'error'}}</td>
              <td><img height="100" width="100"
-                      src="{{$post->photo ? '/post' . $post->photo->lokasi_file :
+                      src="{{$post->photo ?  $post->photo->lokasi_file :
                       'fotokategori/blank-profile-picture.jpg'}}" alt=""></td>
             <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
             <td>{{str_limit($post->content, 10)}}</td>
